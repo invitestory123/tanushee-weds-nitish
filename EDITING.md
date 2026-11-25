@@ -21,7 +21,7 @@ All routine customer edits are configured in:
 - **Hashtag**: `#TanusheeWedsNitish`
 
 ### Wedding Date & Auspicious Muhurat
-- **Date**: Friday, 11th December 2026 (11.12.2026)
+- **Date**: Friday, 11 December 2026 (11.12.2026)
 - **Time**: Ceremonies begin at 10:00 AM
 - **ISO**: `2026-12-11T10:00:00+05:30`
 

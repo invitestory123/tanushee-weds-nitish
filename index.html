@@ -11,18 +11,18 @@
       rel="stylesheet"
     />
     <title>Tanushee ❤ Nitish — Wedding Invitation</title>
-    <meta name="description" content="Tanushee weds Nitish — a digital wedding invitation. Join us on Friday, 11th December 2026 at Royal Residency, Aligarh." />
+    <meta name="description" content="Tanushee weds Nitish — a digital wedding invitation. Join us on Friday, 11 December 2026 at Royal Residency, Aligarh." />
     <!-- ▼▼ PER-CUSTOMER: replace https://YOUR-SITE.netlify.app with the actual deployed URL ▼▼ -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://YOUR-SITE.netlify.app/" />
     <meta property="og:title" content="Tanushee ❤ Nitish — Wedding Invitation" />
-    <meta property="og:description" content="Together with their families, Tanushee & Nitish invite you to celebrate their wedding — Friday, 11th December 2026, Royal Residency, Aligarh." />
+    <meta property="og:description" content="Together with their families, Tanushee & Nitish invite you to celebrate their wedding — Friday, 11 December 2026, Royal Residency, Aligarh." />
     <meta property="og:image" content="external/media.invitestory.in/rajmahal-palace/assets/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Tanushee ❤ Nitish — Wedding Invitation" />
-    <meta name="twitter:description" content="Join us for the wedding celebrations — Friday, 11th December 2026, Royal Residency, Aligarh." />
+    <meta name="twitter:description" content="Join us for the wedding celebrations — Friday, 11 December 2026, Royal Residency, Aligarh." />
     <meta name="twitter:image" content="external/media.invitestory.in/rajmahal-palace/assets/og-image.jpg" />
     <!-- ▲▲ PER-CUSTOMER ▲▲ -->
     <script src="./editable/wedding-data.js"></script>
@@ -31,5 +31,144 @@
   </head>
   <body>
     <div id="root"></div>
+      <audio id="weddingBgm" loop preload="auto">
+      <source src="./editable/assets/bgm.mp3" type="audio/mpeg" />
+    </audio>
+    <button id="musicToggle" class="music-toggle-btn" aria-label="Toggle background music" type="button" title="Play / Pause Music">
+      <span class="music-pulse"></span>
+      <svg id="musicIconPlay" class="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 18V5l12-2v13"></path>
+        <circle cx="6" cy="18" r="3"></circle>
+        <circle cx="18" cy="16" r="3"></circle>
+      </svg>
+      <svg id="musicIconMute" class="music-icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="1" y1="1" x2="23" y2="23"></line>
+        <path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4l6-2v8.5"></path>
+        <circle cx="6" cy="18" r="3"></circle>
+        <circle cx="18" cy="16" r="3"></circle>
+      </svg>
+    </button>
+    <style>
+      .music-toggle-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 9999;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgba(30, 8, 14, 0.8);
+        border: 1.5px solid rgba(217, 164, 65, 0.7);
+        color: #f6e2ae;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), 0 0 12px rgba(217, 164, 65, 0.35);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        transition: all 0.3s ease;
+        outline: none;
+        padding: 0;
+      }
+      .music-toggle-btn:hover {
+        transform: scale(1.08);
+        border-color: #f6e2ae;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 18px rgba(217, 164, 65, 0.55);
+      }
+      .music-toggle-btn .music-icon {
+        width: 20px;
+        height: 20px;
+        stroke: #f6e2ae;
+        transition: transform 0.3s ease;
+      }
+      .music-toggle-btn.is-playing .music-icon {
+        animation: music-spin 8s linear infinite;
+      }
+      @keyframes music-spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      .music-pulse {
+        position: absolute;
+        inset: -3px;
+        border-radius: 50%;
+        border: 1px solid rgba(217, 164, 65, 0.45);
+        animation: music-glow 2.5s ease-in-out infinite;
+        pointer-events: none;
+      }
+      @keyframes music-glow {
+        0%, 100% { transform: scale(1); opacity: 0.3; }
+        50% { transform: scale(1.18); opacity: 0.85; }
+      }
+      .music-toggle-btn .hidden {
+        display: none !important;
+      }
+    </style>
+    <script>
+      (function() {
+        var audio = document.getElementById('weddingBgm');
+        var btn = document.getElementById('musicToggle');
+        var iconPlay = document.getElementById('musicIconPlay');
+        var iconMute = document.getElementById('musicIconMute');
+        var isPlaying = false;
+
+        function updateState(playing) {
+          isPlaying = playing;
+          if (playing) {
+            btn.classList.add('is-playing');
+            iconPlay.classList.remove('hidden');
+            iconMute.classList.add('hidden');
+          } else {
+            btn.classList.remove('is-playing');
+            iconPlay.classList.add('hidden');
+            iconMute.classList.remove('hidden');
+          }
+        }
+
+        window.playWeddingMusic = function() {
+          if (audio && audio.paused) {
+            audio.play().then(function() {
+              updateState(true);
+            }).catch(function() {});
+          }
+        };
+
+        function toggleMusic(e) {
+          if (e) e.stopPropagation();
+          if (audio.paused) {
+            audio.play().then(function() {
+              updateState(true);
+            }).catch(function() {
+              updateState(false);
+            });
+          } else {
+            audio.pause();
+            updateState(false);
+          }
+        }
+
+        if (btn) {
+          btn.addEventListener('click', toggleMusic);
+        }
+
+        function onFirstInteract() {
+          if (!isPlaying && audio) {
+            audio.play().then(function() {
+              updateState(true);
+              removeInteractListeners();
+            }).catch(function() {});
+          }
+        }
+
+        function removeInteractListeners() {
+          document.removeEventListener('click', onFirstInteract);
+          document.removeEventListener('touchstart', onFirstInteract);
+        }
+
+        document.addEventListener('click', onFirstInteract);
+        document.addEventListener('touchstart', onFirstInteract);
+      })();
+    </script>
   </body>
 </html>

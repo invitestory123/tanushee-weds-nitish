@@ -1,10 +1,14 @@
 /**
  * wedding-data.js — Customer-facing editable data layer for rajmahal-palace
  * Tanushee Pathak & Nitish Sharma Wedding
- * 11th December 2026 · Royal Residency, Aligarh
+ * 11 December 2026 · Royal Residency, Aligarh
  */
 
 window.WEDDING_DATA = {
+  music: {
+    src: "./editable/assets/bgm.mp3",
+    autoplay: true,
+  },
   couple: {
     bride: "Tanushee",
     groom: "Nitish",
@@ -21,7 +25,7 @@ window.WEDDING_DATA = {
 
   wedding: {
     dateISO: "2026-12-11T10:00:00+05:30",
-    dateLabel: "Friday, 11th December 2026",
+    dateLabel: "Friday, 11 December 2026",
     timeLabel: "Ceremonies begin at 10:00 AM",
   },
 
@@ -36,52 +40,15 @@ window.WEDDING_DATA = {
     mapsQuery: "Royal Residency, Delhi G.T. Road, Aligarh",
   },
 
-  family: {
-    welcoming: {
-      title: "स्वागताकांक्षी (Welcoming)",
-      bride: [
-        "Rajni-Rajeev Sharma",
-        "Sneh Lata Pathak"
-      ],
-      groom: [
-        "Rekha-Pawan Sharma",
-        "Lata Parashar",
-        "Shivani-Avni Sharma",
-        "Kanchi-Gaurav Baghai"
-      ]
-    },
-    awaiting: {
-      title: "दर्शनाभिलाषी (Desire to See / Awaiting Eye's)",
-      bride: "Aviral Pathak, Pari Pathak, Divyanshi Pathak and whole Pathak family",
-      groom: "Harsh Sharma, Kunal Sharma, Ritik Sharma, Dhruv Sharma, Raghav Sharma, Sakshi Sharma, Kunika Sharma and whole Sharma family"
-    },
-    humbly: {
-      title: "विनीत (Humbly)",
-      bride: [
-        "Anita-Vijay Pathak",
-        "Reena-Pankaj Pathak"
-      ],
-      groom: [
-        "Rajni-Sanjay Sharma",
-        "Meenakshi Sharma",
-        "Rita-Manoj Sharma",
-        "Meetu-Rajeev Sharma",
-        "Namita-Love Sharma"
-      ]
-    },
-    residence: {
-      bride: "D-29, First Floor, Ozone City, Aligarh - 202001",
-      groom: "184, Kanwari Ganj, Hanuman Gali, Aligarh - 202001"
-    }
-  },
+  family: null,
 
-  familySignature: "With love, the Pathak & Sharma families",
+  familySignature: "With love & blessings, Tanushee & Nitish",
 
   events: [
     {
       name: "Lagun Sagai",
       icon: "flower",
-      date: "Friday, 11th December 2026",
+      date: "Friday, 11 December 2026",
       time: "10:00 AM",
       venue: "Royal Residency, Delhi G.T. Road, Aligarh",
       note: "The auspicious engagement and traditional tilak ceremony with sacred family blessings.",
@@ -89,7 +56,7 @@ window.WEDDING_DATA = {
     {
       name: "Phere",
       icon: "heart",
-      date: "Friday, 11th December 2026",
+      date: "Friday, 11 December 2026",
       time: "12:00 PM",
       venue: "Royal Residency, Delhi G.T. Road, Aligarh",
       note: "The seven sacred vows around the holy fire as two hearts unite in eternal love.",
@@ -97,7 +64,7 @@ window.WEDDING_DATA = {
     {
       name: "Dinner",
       icon: "sparkles",
-      date: "Friday, 11th December 2026",
+      date: "Friday, 11 December 2026",
       time: "7:00 PM",
       venue: "Royal Residency, Delhi G.T. Road, Aligarh",
       note: "A royal celebratory dinner and feast with warm memories and joyous blessings.",
