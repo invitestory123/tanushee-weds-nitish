@@ -40,9 +40,12 @@ window.WEDDING_DATA = {
     mapsQuery: "Royal Residency, Delhi G.T. Road, Aligarh",
   },
 
-  family: null,
+  family: {
+    warmRegards: "Warm Regards and Best Compliments",
+    name: "Pathak family",
+  },
 
-  familySignature: "With love & blessings, Tanushee & Nitish",
+  familySignature: "With Love,\nTanushee & Nitish",
 
   events: [
     {
